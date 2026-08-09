@@ -5,22 +5,32 @@
 # keep the application name and short name the same or different for dev and prod build
 # or some migration logic will behave differently for each build
 if(NEXTCLOUD_DEV)
-    set( APPLICATION_NAME       "NextcloudDev" )
-    set( APPLICATION_SHORTNAME  "NextcloudDev" )
-    set( APPLICATION_EXECUTABLE "nextclouddev" )
-    set( APPLICATION_ICON_NAME  "Nextcloud" )
+    set( APPLICATION_NAME       "G2WCloudDev" )
+    set( APPLICATION_SHORTNAME  "G2WCloudDev" )
+    set( APPLICATION_EXECUTABLE "g2wclouddev" )
+    set( APPLICATION_ICON_NAME  "G2WCloud" )
 else()
-    set( APPLICATION_NAME       "Nextcloud" )
-    set( APPLICATION_SHORTNAME  "Nextcloud" )
-    set( APPLICATION_EXECUTABLE "nextcloud" )
-    set( APPLICATION_ICON_NAME  "${APPLICATION_SHORTNAME}" )
+    set( APPLICATION_NAME       "G2W Cloud" )
+    set( APPLICATION_SHORTNAME  "G2W Cloud" )
+    set( APPLICATION_EXECUTABLE "g2wcloud" )
+    # Definido explicitamente SEM espaço, ao contrário do padrão (que herdaria
+    # de APPLICATION_SHORTNAME, "G2W Cloud" — com espaço). Esse nome vira
+    # padrão de busca GLOB no CMake (src/gui/CMakeLists.txt, várias vezes:
+    # "*-${APPLICATION_ICON_NAME}-icon*") — espaço em padrão de glob é risco
+    # real de não casar arquivo, e ninguém testou isso upstream porque
+    # "Nextcloud" nunca teve espaço. Mesmo padrão do bloco NEXTCLOUD_DEV acima.
+    set( APPLICATION_ICON_NAME  "G2WCloud" )
 endif()
 
 set( APPLICATION_CONFIG_NAME "${APPLICATION_EXECUTABLE}" )
-set( APPLICATION_DOMAIN     "nextcloud.com" )
-set( APPLICATION_VENDOR     "Nextcloud GmbH" )
-set( APPLICATION_UPDATE_URL "https://updates.nextcloud.org/client/" CACHE STRING "URL for updater" )
-set( APPLICATION_HELP_URL   "" CACHE STRING "URL for the help menu" )
+set( APPLICATION_DOMAIN     "g2wtecnologia.net" )
+set( APPLICATION_VENDOR     "G2W Tecnologia" )
+# ⚠️ cloud.g2wtecnologia.net é a página de APRESENTAÇÃO da marca (hospedagem
+# compartilhada), não um servidor Nextcloud — nunca usar essa URL como
+# APPLICATION_SERVER_URL (ver abaixo). Aqui é só o motor de atualização do
+# client, que pode viver numa subpasta desse mesmo domínio.
+set( APPLICATION_UPDATE_URL "https://cloud.g2wtecnologia.net/updates/desktop/" CACHE STRING "URL for updater" )
+set( APPLICATION_HELP_URL   "https://cloud.g2wtecnologia.net/ajuda" CACHE STRING "URL for the help menu" )
 
 # Default macOS builds (Nextcloud + NextcloudDev) use the Icon Composer (.icon)
 # format for the app icon. That format can only be compiled by a recent enough
@@ -79,18 +89,27 @@ if(APPLE)
 endif()
 
 set( APPLICATION_ICON_SET   "SVG" )
+# ⚠️ De propósito vazio: o servidor público do G2W Cloud ainda não existe
+# (hoje só roda interno, 192.168.4.104). cloud.g2wtecnologia.net é a página
+# de apresentação da marca, não um servidor — nunca preencher aqui com esse
+# domínio. Revisitar quando o servidor tiver endereço público definitivo.
 set( APPLICATION_SERVER_URL "" CACHE STRING "URL for the server to use. If entered, the UI field will be pre-filled with it" )
 set( APPLICATION_SERVER_URL_ENFORCE ON ) # If set and APPLICATION_SERVER_URL is defined, the server can only connect to the pre-defined URL
-set( APPLICATION_REV_DOMAIN "com.nextcloud.desktopclient" )
-set( APPLICATION_REV_DOMAIN_DBUS "desktopclient.nextcloud.com" )
+set( APPLICATION_REV_DOMAIN "net.g2wtecnologia.g2wcloud" )
+set( APPLICATION_REV_DOMAIN_DBUS "g2wcloud.g2wtecnologia.net" )
 set( DEVELOPMENT_TEAM "NKUJUXUJ3B" CACHE STRING "Apple Development Team ID" )
-set( APPLICATION_VIRTUALFILE_SUFFIX "nextcloud" CACHE STRING "Virtual file suffix (not including the .)")
+set( APPLICATION_VIRTUALFILE_SUFFIX "g2wcloud" CACHE STRING "Virtual file suffix (not including the .)")
 set( APPLICATION_OCSP_STAPLING_ENABLED OFF )
 set( APPLICATION_FORBID_BAD_SSL OFF )
 
-set( LINUX_PACKAGE_SHORTNAME "nextcloud" )
+set( LINUX_PACKAGE_SHORTNAME "g2wcloud" )
 set( LINUX_APPLICATION_ID "${APPLICATION_REV_DOMAIN}.${LINUX_PACKAGE_SHORTNAME}")
 
+# NextcloudTheme é o nome real da classe C++ (src/libsync/nextcloudtheme.h),
+# instanciada em tempo de compilação (theme.cpp: `new THEME_CLASS`) — não é
+# texto exibido ao usuário, é identificador interno. Trocar exigiria criar a
+# classe correspondente; sem ganho nenhum, já que tudo visível (nome, cores,
+# ícone) já vem das variáveis acima. Mantido de propósito.
 set( THEME_CLASS            "NextcloudTheme" )
 set( WIN_SETUP_BITMAP_PATH  "${CMAKE_SOURCE_DIR}/admin/win/nsi" )
 
@@ -114,7 +133,9 @@ option( DO_NOT_USE_PROXY "Do not use system wide proxy, instead always do a dire
 option( WIN_DISABLE_USERNAME_PREFILL "Do not prefill the Windows user name when creating a new account" OFF )
 
 ## Theming options
-set(NEXTCLOUD_BACKGROUND_COLOR "#0082c9" CACHE STRING "Default Nextcloud background color")
+# Mesmo verde usado no servidor (themes/default/defaults.php do g2wcloud) e
+# no site/app do G2W Monitor — consistência de marca entre os produtos.
+set(NEXTCLOUD_BACKGROUND_COLOR "#3c6c42" CACHE STRING "Default G2W Cloud background color")
 set( APPLICATION_WIZARD_HEADER_BACKGROUND_COLOR ${NEXTCLOUD_BACKGROUND_COLOR} CACHE STRING "Hex color of the wizard header background")
 set( APPLICATION_WIZARD_HEADER_TITLE_COLOR "#ffffff" CACHE STRING "Hex color of the text in the wizard header")
 option( APPLICATION_WIZARD_USE_CUSTOM_LOGO "Use the logo from ':/client/theme/colored/wizard_logo.(png|svg)' else the default application icon is used" ON )
