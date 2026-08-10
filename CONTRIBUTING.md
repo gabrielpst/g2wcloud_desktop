@@ -1,77 +1,38 @@
 <!--
+  - SPDX-FileCopyrightText: 2026 G2W Tecnologia
   - SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
-  - SPDX-FileCopyrightText: 2013 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: GPL-2.0-or-later
 -->
-## Contributing by reporting issues
+## Como contribuir
 
-* **Always report bugs via Github**: that is the most reliable way to contacts us since we do not follow any process to check the forum and social media. 
-* **For questions about the Nextcloud Desktop Client**, use the [📋 Forum](https://help.nextcloud.com) and the [:speech_balloon: Desktop public Talk chat room](https://cloud.nextcloud.com/call/d8k2r6p6).
-* Alternativately, we also have [🐣 Twitter](https://twitter.com/Nextclouders) and [🐘 Mastodon](https://mastodon.xyz/@nextcloud) accounts. 
+Este é um fork privado do [Nextcloud Desktop Client](https://github.com/nextcloud/desktop) mantido pela **G2W Tecnologia** para o **G2W Cloud**. Não seguimos o processo de contribuição da comunidade Nextcloud (fórum, Twitter/Mastodon, Transifex etc.) — esse fluxo é da Nextcloud GmbH, não nosso.
 
-### Bug Reporting Guidelines
+* **Bugs e problemas**: abra uma [issue neste repositório](https://github.com/gabrielpst/g2wcloud_desktop/issues).
+* **Dúvidas ou problema de segurança**: fale direto com a G2W — WhatsApp +55 67 99608-6281 ou contato@g2wtecnologia.net. Não é preciso passar por HackerOne nem por nenhum canal da Nextcloud GmbH.
+* Bug em outro componente do G2W Cloud (o servidor, não o cliente desktop) deve ser reportado no [repositório do servidor](https://github.com/gabrielpst/g2wcloud/issues).
 
-* __Important__: [Complete the bug report form](https://github.com/nextcloud/desktop/issues/new/choose). If you fill it correctly, it should give us enough information to start working on the issue.
-* __SECURITY__: **Please do _not_ report security vulnerabilities through public GitHub issues.** 
-If you have discovered a security matter with Nextcloud, please first read our [responsible disclosure guidelines](https://nextcloud.com/security/) and our [security policy](https://github.com/nextcloud/server/blob/9459724e72d647bb21d0bc36c6dc56b751771130/SECURITY.md). Then contact us at [hackerone.com/nextcloud](https://hackerone.com/nextcloud).
-* This repository is *only* for issues within the Nextcloud desktop client. 
-  Issues in other components should be reported in their own repositores: 
-  - [Nextcloud server](https://github.com/nextcloud/server/issues)
-  - [Android client](https://github.com/nextcloud/android/issues)
-  - [iOS client](https://github.com/nextcloud/ios/issues)
-* Search the existing issues first, it's likely that your issue was already
-  reported.
-* If your issue appears to be a bug and hasn't been reported, open a new issue.
-  Help us to maximize the effort we can spend fixing issues and adding new features, by not reporting duplicate issues.
+## Contribuições assistidas por IA
 
-## Contributing to Source Code
+Mantido com apoio de IA (Claude) desde a criação deste fork — então a política abaixo é sobre como usamos isso na prática, não teoria:
 
-Thanks for wanting to contribute source code to Nextcloud. That's great!
+* **Responsabilidade**: quem submete é responsável pelo código, IA ajudando ou não. Precisa saber explicar e defender cada linha.
+* **Teste antes de aceitar**: mudança gerada com IA só entra depois de testada de verdade (rodando, não só "parece certo") — mesmo padrão usado no branding e no build deste fork.
+* **Licença**: qualquer trecho de código sugerido por IA precisa ser compatível com a GPL-2.0-or-later do projeto.
 
-We ask that you follow our [Code of Conduct](https://nextcloud.com/code-of-conduct/).
+## Assinatura de commit (DCO)
 
-Please read the [Contribution Guide](https://nextcloud.com/contribute/) to get 
-started and follow the [Coding Style](https://github.com/nextcloud/desktop/wiki/Coding-Style)
-when writing new code.
-
-## AI-assisted contributions
-
-Nextcloud allows contributions made with the help of AI tools. You are the author of everything you submit - AI assistance does not change that responsibility.
-
-* **Disclosure:** Declare AI tool use in the PR description and add an `Assisted-by: AGENT_NAME:MODEL_VERSION` git trailer to each affected commit.
-
-* **Accountability:** You must be able to explain, defend, and modify every line you submit. If a reviewer asks why something works a certain way, "the AI wrote it" is not an answer.
-
-* **Communication:** PR descriptions, review comments, and issue reports must be written in your own words. This applies throughout the review process - passing reviewer feedback to an AI and posting whatever comes out is not acceptable.
-
-* **Quality:** AI output must be quality assured by the human, i.e. reviewed, cleaned up, and tested before submission. New features must be tested on a live instance by you, not by an agent. Code that has never been executed, or that shifts debugging work onto maintainers, will not be accepted.
-s
-* **Licensing:** Ensure AI-generated code contains no material incompatible with the license of the repository you are contributing to.
-
-For the full policy including autonomous agent rules, security reports, and beginner issues, read the [AI Contribution Policy](https://github.com/nextcloud/.github/blob/master/AI_POLICY.md).
-
-## Sign your work
-
-We use the Developer Certificate of Origin (DCO) as an additional safeguard
-for the Nextcloud project. This is a well established and widely used
-mechanism to assure contributors have confirmed their right to license
-their contribution under the project's license.
-Please read [contribute/developer-certificate-of-origin](https://github.com/nextcloud/server/blob/master/contribute/developer-certificate-of-origin).
-If you can certify it, then just add a line to every git commit message:
+Mantemos a prática de assinar commits, mesma origem do projeto upstream:
 
 ```
-Signed-off-by: Random J Developer <random@developer.example.org>
+Signed-off-by: Seu Nome <seu@email.com>
 ```
 
-If you set your `user.name` and `user.email` git configs, you can sign your
-commit automatically with `git commit -s`. You can also use git [aliases](https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases)
-like `git config --global alias.ci 'commit -s'`. Now you can commit with
-`git ci` and the commit will be signed.
+Configure `user.name`/`user.email` no git e use `git commit -s` para assinar automaticamente.
 
-## Apply a license
+## Licença
 
-In case you are not sure how to add or update the license header correctly please have a look at [contribute/HowToApplyALicense.md](https://github.com/nextcloud/server/blob/master/contribute/HowToApplyALicense.md).
+Este fork segue a mesma licença do projeto original: [GPL-2.0-or-later](COPYING). Ver [`LICENSES/`](LICENSES/) para as licenças de cada dependência.
 
-## Translations
+## Traduções
 
-Please submit translations via [Transifex](https://explore.transifex.com/nextcloud/).
+Não usamos o Transifex do projeto upstream. Sem processo de tradução próprio definido ainda — se isso mudar, atualizamos aqui.
