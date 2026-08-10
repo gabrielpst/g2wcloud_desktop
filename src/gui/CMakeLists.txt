@@ -643,7 +643,13 @@ if(NOT BUILD_OWNCLOUD_OSX_BUNDLE)
         file(GLOB_RECURSE VISUAL_ELEMENTS "${theme_dir}/colored/*-${APPLICATION_ICON_NAME}-w10startmenu*")
         install(FILES ${VISUAL_ELEMENTS} DESTINATION bin/visualelements)
         install(FILES "${theme_dir}/${APPLICATION_EXECUTABLE}.VisualElementsManifest.xml" DESTINATION bin)
-        install(FILES ${client_I18N} DESTINATION i18n)
+        # G2W: era "DESTINATION i18n" (raiz, irmão de bin/) — mas
+        # applicationTrPath() em src/gui/application.cpp procura em
+        # applicationDirPath() + "/i18n/" no Windows, ou seja dentro de
+        # bin/. Com o destino antigo o app nunca achava os .qm (inclusive
+        # client_pt_BR.qm) e caía sempre no inglês, sem alternativa na UI
+        # (essa versão do cliente não tem seletor manual de idioma).
+        install(FILES ${client_I18N} DESTINATION bin/i18n)
     endif()
 
     # we may not add MACOSX_BUNDLE here, if not building one
