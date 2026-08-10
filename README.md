@@ -23,7 +23,7 @@ Toda a identidade (nome, ícones, cores do assistente de configuração, URLs de
 
 ## Instalação / Build
 
-Requer Qt 6, CMake e as dependências padrão do projeto Nextcloud Desktop — ver [`doc/`](doc/) e [`CONTRIBUTING.md`](CONTRIBUTING.md) upstream (o processo de build é idêntico ao original, só a marca muda).
+Requer Qt 6, CMake e as dependências padrão do projeto Nextcloud Desktop — ver [`doc/`](doc/) (instruções de build upstream, processo idêntico ao original, só a marca muda). Ver [`CONTRIBUTING.md`](CONTRIBUTING.md) para o processo de contribuição da G2W.
 
 ## Manter atualizado
 
